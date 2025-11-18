@@ -1,0 +1,331 @@
+[
+  {
+    "test_case_id": "TC_0001",
+    "description": "Tạo câu hỏi trắc nghiệm thành công - Single choice",
+    "expected": "Form submit thành công, toast success hiển thị, câu hỏi xuất hiện trong danh sách",
+    "args": {
+      "email": "nguyenhuuphuc22052004+5@gmail.com",
+      "password": "22052004",
+      "content": "What is the capital of France?",
+      "type": "multiple_choice",
+      "difficulty": "easy",
+      "category": null,
+      "options": [
+        {"content": "Paris", "is_correct": true},
+        {"content": "London", "is_correct": false},
+        {"content": "Berlin", "is_correct": false}
+      ],
+      "is_multiple_answer": false,
+      "is_public": true
+    }
+  },
+  {
+    "test_case_id": "TC_0002",
+    "description": "Tạo câu hỏi tự luận thành công",
+    "expected": "Form submit thành công, toast success hiển thị",
+    "args": {
+      "email": "nguyenhuuphuc22052004+5@gmail.com",
+      "password": "22052004",
+      "content": "Explain the benefits of Object-Oriented Programming and provide examples",
+      "type": "essay",
+      "difficulty": "hard",
+      "category": null,
+      "options": [],
+      "is_multiple_answer": false,
+      "is_public": false
+    }
+  },
+  {
+    "test_case_id": "TC_0003",
+    "description": "Thêm option - Kiểm tra toast hiển thị",
+    "expected": "Toast success hiển thị: 'Đã thêm lựa chọn mới - Lựa chọn 3 đã được thêm vào'",
+    "args": {
+      "email": "nguyenhuuphuc22052004+5@gmail.com",
+      "password": "22052004",
+      "action": "add_option",
+      "verify_toast": true
+    }
+  },
+  {
+    "test_case_id": "TC_0004",
+    "description": "Xóa option thành công - Kiểm tra toast",
+    "expected": "Toast info hiển thị: 'Đã xóa lựa chọn - Lựa chọn X đã được xóa'",
+    "args": {
+      "email": "nguyenhuuphuc22052004+5@gmail.com",
+      "password": "22052004",
+      "action": "remove_option_success",
+      "initial_options": 3,
+      "verify_toast": true
+    }
+  },
+  {
+    "test_case_id": "TC_0005",
+    "description": "Không thể xóa option khi chỉ còn 2 - Toast warning",
+    "expected": "Toast warning: 'Không thể xóa - Câu hỏi trắc nghiệm phải có ít nhất 2 lựa chọn'",
+    "args": {
+      "email": "nguyenhuuphuc22052004+5@gmail.com",
+      "password": "22052004",
+      "action": "remove_option_fail",
+      "initial_options": 2,
+      "verify_toast": true
+    }
+  },
+  {
+    "test_case_id": "TC_0006",
+    "description": "Drag & drop sắp xếp options",
+    "expected": "Thứ tự options thay đổi sau khi drag & drop",
+    "args": {
+      "email": "nguyenhuuphuc22052004+5@gmail.com",
+      "password": "22052004",
+      "action": "drag_drop",
+      "drag_from_index": 2,
+      "drop_to_index": 0
+    }
+  },
+  {
+    "test_case_id": "TC_0007",
+    "description": "Tạo câu hỏi Multiple Choice - Nhiều đáp án đúng",
+    "expected": "Form submit thành công với nhiều đáp án đúng",
+    "args": {
+      "email": "nguyenhuuphuc22052004+5@gmail.com",
+      "password": "22052004",
+      "content": "Which of the following are programming languages?",
+      "type": "multiple_choice",
+      "difficulty": "medium",
+      "category": null,
+      "options": [
+        {"content": "Python", "is_correct": true},
+        {"content": "Java", "is_correct": true},
+        {"content": "HTML", "is_correct": false},
+        {"content": "C++", "is_correct": true}
+      ],
+      "is_multiple_answer": true,
+      "is_public": true
+    }
+  },
+  {
+    "test_case_id": "TC_0008",
+    "description": "Content rỗng - Validation error",
+    "expected": "Error: 'Question content must be at least 10 characters', Form không submit",
+    "args": {
+      "email": "nguyenhuuphuc22052004+5@gmail.com",
+      "password": "22052004",
+      "content": "",
+      "type": "multiple_choice",
+      "difficulty": "easy",
+      "should_fail": true
+    }
+  },
+  {
+    "test_case_id": "TC_0009",
+    "description": "Content < 10 ký tự",
+    "expected": "Error: 'Question content must be at least 10 characters'",
+    "args": {
+      "email": "nguyenhuuphuc22052004+5@gmail.com",
+      "password": "22052004",
+      "content": "Test",
+      "type": "multiple_choice",
+      "difficulty": "easy",
+      "should_fail": true
+    }
+  },
+  {
+    "test_case_id": "TC_0010",
+    "description": "Content toàn khoảng trắng",
+    "expected": "Error: 'Question content cannot be only whitespace'",
+    "args": {
+      "email": "nguyenhuuphuc22052004+5@gmail.com",
+      "password": "22052004",
+      "content": "          ",
+      "type": "multiple_choice",
+      "difficulty": "easy",
+      "should_fail": true
+    }
+  },
+  {
+    "test_case_id": "TC_0011",
+    "description": "Options rỗng - Không có nội dung",
+    "expected": "Error: 'All options must have content (not empty or whitespace only)'",
+    "args": {
+      "email": "nguyenhuuphuc22052004+5@gmail.com",
+      "password": "22052004",
+      "content": "What is Java?",
+      "type": "multiple_choice",
+      "difficulty": "easy",
+      "options": [
+        {"content": "", "is_correct": false},
+        {"content": "", "is_correct": false}
+      ],
+      "should_fail": true
+    }
+  },
+  {
+    "test_case_id": "TC_0012",
+    "description": "Option toàn khoảng trắng",
+    "expected": "Error: 'All options must have content (not empty or whitespace only)'",
+    "args": {
+      "email": "nguyenhuuphuc22052004+5@gmail.com",
+      "password": "22052004",
+      "content": "What is Python?",
+      "type": "multiple_choice",
+      "difficulty": "easy",
+      "options": [
+        {"content": "Python language", "is_correct": true},
+        {"content": "     ", "is_correct": false}
+      ],
+      "should_fail": true
+    }
+  },
+  {
+    "test_case_id": "TC_0013",
+    "description": "Không chọn đáp án đúng - Single Choice",
+    "expected": "Error: 'Must have at least 1 correct answer'",
+    "args": {
+      "email": "nguyenhuuphuc22052004+5@gmail.com",
+      "password": "22052004",
+      "content": "What is JavaScript?",
+      "type": "multiple_choice",
+      "difficulty": "easy",
+      "options": [
+        {"content": "JavaScript", "is_correct": false},
+        {"content": "Java", "is_correct": false}
+      ],
+      "is_multiple_answer": false,
+      "should_fail": true
+    }
+  },
+  {
+    "test_case_id": "TC_0014",
+    "description": "Không chọn đáp án đúng - Multiple Choice",
+    "expected": "Error: 'Must have at least 1 correct answer'",
+    "args": {
+      "email": "nguyenhuuphuc22052004+5@gmail.com",
+      "password": "22052004",
+      "content": "Select programming languages",
+      "type": "multiple_choice",
+      "difficulty": "easy",
+      "options": [
+        {"content": "Python", "is_correct": false},
+        {"content": "Java", "is_correct": false},
+        {"content": "C++", "is_correct": false}
+      ],
+      "is_multiple_answer": true,
+      "should_fail": true
+    }
+  },
+  {
+    "test_case_id": "TC_0015",
+    "description": "Content = 10 ký tự (Boundary Valid)",
+    "expected": "Validation pass, không có error",
+    "args": {
+      "email": "nguyenhuuphuc22052004+5@gmail.com",
+      "password": "22052004",
+      "content": "Test quest",
+      "type": "multiple_choice",
+      "difficulty": "easy",
+      "options": [
+        {"content": "Option A", "is_correct": true},
+        {"content": "Option B", "is_correct": false}
+      ],
+      "is_multiple_answer": false,
+      "is_public": false
+    }
+  },
+  {
+    "test_case_id": "TC_0016",
+    "description": "Content có spaces đầu/cuối nhưng valid",
+    "expected": "Validation pass (sau trim >= 10 ký tự)",
+    "args": {
+      "email": "nguyenhuuphuc22052004+5@gmail.com",
+      "password": "22052004",
+      "content": "   What is Java programming?   ",
+      "type": "multiple_choice",
+      "difficulty": "medium",
+      "options": [
+        {"content": "OOP Language", "is_correct": true},
+        {"content": "Functional", "is_correct": false}
+      ],
+      "is_multiple_answer": false,
+      "is_public": true
+    }
+  },
+  {
+    "test_case_id": "TC_0017",
+    "description": "Chuyển từ Multiple Choice sang Essay",
+    "expected": "Phần Answer Options biến mất",
+    "args": {
+      "email": "nguyenhuuphuc22052004+5@gmail.com",
+      "password": "22052004",
+      "action": "change_type",
+      "from_type": "multiple_choice",
+      "to_type": "essay"
+    }
+  },
+  {
+    "test_case_id": "TC_0018",
+    "description": "Content = 9 ký tự (Boundary Invalid)",
+    "expected": "Error: 'Question content must be at least 10 characters'",
+    "args": {
+      "email": "nguyenhuuphuc22052004+5@gmail.com",
+      "password": "22052004",
+      "content": "Test ques",
+      "type": "multiple_choice",
+      "difficulty": "easy",
+      "should_fail": true
+    }
+  },
+  {
+    "test_case_id": "TC_0019",
+    "description": "Content toàn tab và newline",
+    "expected": "Error: 'Question content cannot be only whitespace'",
+    "args": {
+      "email": "nguyenhuuphuc22052004+5@gmail.com",
+      "password": "22052004",
+      "content": "\t\t\t\n\n\n",
+      "type": "multiple_choice",
+      "difficulty": "easy",
+      "should_fail": true
+    }
+  },
+  {
+    "test_case_id": "TC_0020",
+    "description": "Mix valid và invalid options",
+    "expected": "Error: 'All options must have content (not empty or whitespace only)'",
+    "args": {
+      "email": "nguyenhuuphuc22052004+5@gmail.com",
+      "password": "22052004",
+      "content": "What is programming?",
+      "type": "multiple_choice",
+      "difficulty": "easy",
+      "options": [
+        {"content": "Valid answer", "is_correct": true},
+        {"content": "", "is_correct": false},
+        {"content": "Another valid", "is_correct": false},
+        {"content": "   ", "is_correct": false}
+      ],
+      "should_fail": true
+    }
+  },
+  {
+    "test_case_id": "TC_0021",
+    "description": "Chuyển radio giữa các options",
+    "expected": "Radio đầu tự động bỏ tick, chỉ radio mới được tick",
+    "args": {
+      "email": "nguyenhuuphuc22052004+5@gmail.com",
+      "password": "22052004",
+      "action": "toggle_radio",
+      "first_option": 0,
+      "second_option": 1
+    }
+  },
+  {
+    "test_case_id": "TC_0022",
+    "description": "Toggle Multiple correct answers ON/OFF",
+    "expected": "Radio chuyển thành checkbox khi ON, và ngược lại",
+    "args": {
+      "email": "nguyenhuuphuc22052004+5@gmail.com",
+      "password": "22052004",
+      "action": "toggle_multiple_answer"
+    }
+  }
+]

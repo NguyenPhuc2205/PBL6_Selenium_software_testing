@@ -1,0 +1,257 @@
+[
+  {
+    "test_case_id": "TC_CU_001",
+    "description": "Tạo người dùng thành công - Đầy đủ thông tin hợp lệ (User)",
+    "expected": "Form submit thành công, toast success hiển thị, người dùng mới được tạo",
+    "args": {
+      "login_email": "nguyenhuuphuc22052004@gmail.com",
+      "login_password": "22052004",
+      "full_name": "Nguyễn Văn An",
+      "email": "nguyenvanan123@gmail.com",
+      "phone": "0912345678",
+      "gender": "male",
+      "date_of_birth": "2000-05-15",
+      "role": "user",
+      "password": "Abc@1234",
+      "confirm_password": "Abc@1234"
+    }
+  },
+  {
+    "test_case_id": "TC_CU_002",
+    "description": "Tạo giảng viên thành công - Đầy đủ thông tin",
+    "expected": "Form submit thành công, giảng viên được tạo",
+    "args": {
+      "login_email": "nguyenhuuphuc22052004@gmail.com",
+      "login_password": "22052004",
+      "full_name": "Trần Thị Bình",
+      "email": "tranthibibnh456@gmail.com",
+      "phone": "0987654321",
+      "gender": "female",
+      "date_of_birth": "1985-03-20",
+      "role": "teacher",
+      "password": "Teacher@2024",
+      "confirm_password": "Teacher@2024"
+    }
+  },
+  {
+    "test_case_id": "TC_CU_003",
+    "description": "Tạo người dùng - Không điền số điện thoại (Optional field)",
+    "expected": "Form submit thành công vì phone là optional",
+    "args": {
+      "login_email": "nguyenhuuphuc22052004@gmail.com",
+      "login_password": "22052004",
+      "full_name": "Lê Văn Cường",
+      "email": "levancuong789@gmail.com",
+      "phone": "",
+      "gender": "male",
+      "date_of_birth": "1998-07-10",
+      "role": "user",
+      "password": "User@9999",
+      "confirm_password": "User@9999"
+    }
+  },
+  {
+    "test_case_id": "TC_CU_004",
+    "description": "Tạo người dùng - Không chọn giới tính (Optional field)",
+    "expected": "Form submit thành công vì gender là optional",
+    "args": {
+      "login_email": "nguyenhuuphuc22052004@gmail.com",
+      "login_password": "22052004",
+      "full_name": "Phạm Thị Dung",
+      "email": "phamthidung321@gmail.com",
+      "phone": "0901234567",
+      "gender": "",
+      "date_of_birth": "1995-12-25",
+      "role": "user",
+      "password": "Secure@123",
+      "confirm_password": "Secure@123"
+    }
+  },
+  {
+    "test_case_id": "TC_CU_005",
+    "description": "Tạo người dùng - Không điền ngày sinh (Optional field)",
+    "expected": "Form submit thành công vì date_of_birth là optional",
+    "args": {
+      "login_email": "nguyenhuuphuc22052004@gmail.com",
+      "login_password": "22052004",
+      "full_name": "Hoàng Văn Em",
+      "email": "hoangvanem654@gmail.com",
+      "phone": "0923456789",
+      "gender": "other",
+      "date_of_birth": "",
+      "role": "user",
+      "password": "Valid@2024",
+      "confirm_password": "Valid@2024"
+    }
+  },
+  {
+    "test_case_id": "TC_CU_006",
+    "description": "Validation Error - Họ tên quá ngắn (ít hơn 2 ký tự)",
+    "expected": "Hiển thị lỗi: 'Họ và tên phải có ít nhất 2 ký tự'",
+    "args": {
+      "login_email": "nguyenhuuphuc22052004@gmail.com",
+      "login_password": "22052004",
+      "full_name": "A",
+      "email": "test@gmail.com",
+      "phone": "0912345678",
+      "gender": "male",
+      "date_of_birth": "2000-01-01",
+      "role": "user",
+      "password": "Test@123",
+      "confirm_password": "Test@123"
+    }
+  },
+  {
+    "test_case_id": "TC_CU_007",
+    "description": "Validation Error - Email không hợp lệ (thiếu @)",
+    "expected": "Hiển thị lỗi: 'Email không hợp lệ' hoặc 'Định dạng email không hợp lệ'",
+    "args": {
+      "login_email": "nguyenhuuphuc22052004@gmail.com",
+      "login_password": "22052004",
+      "full_name": "Nguyễn Văn Test",
+      "email": "invalidemailgmail.com",
+      "phone": "0912345678",
+      "gender": "male",
+      "date_of_birth": "2000-01-01",
+      "role": "user",
+      "password": "Test@123",
+      "confirm_password": "Test@123"
+    }
+  },
+  {
+    "test_case_id": "TC_CU_008",
+    "description": "Validation Error - Số điện thoại không hợp lệ (ít hơn 10 số)",
+    "expected": "Hiển thị lỗi: 'Số điện thoại phải bắt đầu bằng 0 hoặc +84 và có 10-11 chữ số'",
+    "args": {
+      "login_email": "nguyenhuuphuc22052004@gmail.com",
+      "login_password": "22052004",
+      "full_name": "Trần Văn Test",
+      "email": "tranvantest@gmail.com",
+      "phone": "091234",
+      "gender": "male",
+      "date_of_birth": "2000-01-01",
+      "role": "user",
+      "password": "Test@123",
+      "confirm_password": "Test@123"
+    }
+  },
+  {
+    "test_case_id": "TC_CU_009",
+    "description": "Validation Error - Số điện thoại không bắt đầu bằng 0 hoặc +84",
+    "expected": "Hiển thị lỗi về format số điện thoại",
+    "args": {
+      "login_email": "nguyenhuuphuc22052004@gmail.com",
+      "login_password": "22052004",
+      "full_name": "Lê Thị Test",
+      "email": "lethitest@gmail.com",
+      "phone": "1234567890",
+      "gender": "female",
+      "date_of_birth": "2000-01-01",
+      "role": "user",
+      "password": "Test@123",
+      "confirm_password": "Test@123"
+    }
+  },
+  {
+    "test_case_id": "TC_CU_010",
+    "description": "Validation Error - Ngày sinh trong tương lai",
+    "expected": "Hiển thị lỗi: 'Ngày sinh không được là ngày trong tương lai'",
+    "args": {
+      "login_email": "nguyenhuuphuc22052004@gmail.com",
+      "login_password": "22052004",
+      "full_name": "Phạm Văn Future",
+      "email": "phamvanfuture@gmail.com",
+      "phone": "0912345678",
+      "gender": "male",
+      "date_of_birth": "2030-12-31",
+      "role": "user",
+      "password": "Test@123",
+      "confirm_password": "Test@123"
+    }
+  },
+  {
+    "test_case_id": "TC_CU_011",
+    "description": "Validation Error - Tuổi quá nhỏ (dưới 5 tuổi)",
+    "expected": "Hiển thị lỗi: 'Tuổi phải từ 5 đến 120 tuổi'",
+    "args": {
+      "login_email": "nguyenhuuphuc22052004@gmail.com",
+      "login_password": "22052004",
+      "full_name": "Bé Nhỏ",
+      "email": "benho@gmail.com",
+      "phone": "0912345678",
+      "gender": "male",
+      "date_of_birth": "2023-01-01",
+      "role": "user",
+      "password": "Test@123",
+      "confirm_password": "Test@123"
+    }
+  },
+  {
+    "test_case_id": "TC_CU_012",
+    "description": "Validation Error - Mật khẩu quá ngắn (dưới 6 ký tự)",
+    "expected": "Hiển thị lỗi: 'Mật khẩu phải có ít nhất 6 ký tự'",
+    "args": {
+      "login_email": "nguyenhuuphuc22052004@gmail.com",
+      "login_password": "22052004",
+      "full_name": "Nguyễn Test Short",
+      "email": "testshort@gmail.com",
+      "phone": "0912345678",
+      "gender": "male",
+      "date_of_birth": "2000-01-01",
+      "role": "user",
+      "password": "Ab@1",
+      "confirm_password": "Ab@1"
+    }
+  },
+  {
+    "test_case_id": "TC_CU_013",
+    "description": "Validation Error - Mật khẩu thiếu chữ hoa",
+    "expected": "Hiển thị lỗi: 'Mật khẩu phải chứa ít nhất 1 chữ cái in hoa'",
+    "args": {
+      "login_email": "nguyenhuuphuc22052004@gmail.com",
+      "login_password": "22052004",
+      "full_name": "Trần Test Lower",
+      "email": "testlower@gmail.com",
+      "phone": "0912345678",
+      "gender": "male",
+      "date_of_birth": "2000-01-01",
+      "role": "user",
+      "password": "abc@1234",
+      "confirm_password": "abc@1234"
+    }
+  },
+  {
+    "test_case_id": "TC_CU_014",
+    "description": "Validation Error - Mật khẩu thiếu ký tự đặc biệt",
+    "expected": "Hiển thị lỗi: 'Mật khẩu phải chứa ít nhất 1 ký tự đặc biệt'",
+    "args": {
+      "login_email": "nguyenhuuphuc22052004@gmail.com",
+      "login_password": "22052004",
+      "full_name": "Lê Test Special",
+      "email": "testspecial@gmail.com",
+      "phone": "0912345678",
+      "gender": "male",
+      "date_of_birth": "2000-01-01",
+      "role": "user",
+      "password": "Abc12345",
+      "confirm_password": "Abc12345"
+    }
+  },
+  {
+    "test_case_id": "TC_CU_015",
+    "description": "Validation Error - Mật khẩu xác nhận không khớp",
+    "expected": "Hiển thị lỗi: 'Mật khẩu xác nhận không khớp'",
+    "args": {
+      "login_email": "nguyenhuuphuc22052004@gmail.com",
+      "login_password": "22052004",
+      "full_name": "Phạm Test Mismatch",
+      "email": "testmismatch@gmail.com",
+      "phone": "0912345678",
+      "gender": "male",
+      "date_of_birth": "2000-01-01",
+      "role": "user",
+      "password": "Test@123",
+      "confirm_password": "Test@456"
+    }
+  }
+]
