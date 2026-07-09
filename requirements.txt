@@ -19,7 +19,7 @@ pytest-xdist==3.5.0
 
 # Utilities
 python-dotenv==1.0.0
-pillow==10.1.0
+pillow==10.3.0
 requests==2.31.0
 
 # Logging và reporting
